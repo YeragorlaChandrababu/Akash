@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -24,35 +24,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Repair CSS syntax
+      - name: Prepare static site
         run: |
-          python - <<'PY'
-          from pathlib import Path
-          path = Path("src/styles.css")
-          css = path.read_text()
-          broken = "background:linear-gradient(transparent 55%,rgba(9,7,12,.72)}"
-          fixed = "background:linear-gradient(transparent 55%,rgba(9,7,12,.72));}"
-          if broken in css:
-              path.write_text(css.replace(broken, fixed, 1))
-          PY
-          if ! git diff --quiet -- src/styles.css; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add src/styles.css
-            git commit -m "fix: correct memory image overlay CSS"
-            git push
-          fi
-
-      - name: Setup Node
-        uses: actions/setup-node@v6
-        with:
-          node-version: 22
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build
+          rm -rf dist
+          mkdir dist
+          cp index.html styles.css script.js dist/
+          if [ -d images ]; then cp -r images dist/; fi
+          if [ -d audio ]; then cp -r audio dist/; fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v6
