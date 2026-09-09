@@ -1,14 +1,86 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#100b18" />
-    <meta name="description" content="A little birthday surprise for Akash — September 9, 2026." />
-    <title>For Akash — Happy Birthday</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="./src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#100b18">
+  <meta name="description" content="A little birthday surprise for Akash — September 9, 2026.">
+  <title>For Akash — Happy Birthday</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div id="stars" aria-hidden="true"></div>
+  <div id="confetti" aria-hidden="true"></div>
+
+  <main>
+    <section id="hero" class="hero screen active">
+      <div class="orb orb-a"></div><div class="orb orb-b"></div>
+      <div class="hero-inner reveal">
+        <p class="eyebrow" id="intro">Hey Akash… 👀</p>
+        <h1 id="heroTitle">Today is not just another day.</h1>
+        <p class="hero-sub" id="heroSub">Because today, someone awesome was born.</p>
+        <div class="date">09 <span>•</span> 09 <span>•</span> 2026</div>
+        <button class="primary" id="openBtn">Open Your Birthday Surprise <span>→</span></button>
+        <button class="music-link" id="musicEnable">♬ Enable Birthday Music</button>
+      </div>
+      <div class="scroll-hint">Scroll when you're ready <span>↓</span></div>
+    </section>
+
+    <div id="experience" class="experience" hidden>
+      <section class="section message reveal-on-scroll">
+        <p class="eyebrow">A little something for you…</p>
+        <h2>Some people make life louder.<br>Some make it brighter.</h2>
+        <p class="body-copy">And then there are people like you who somehow make ordinary moments memorable. Here's to another year of random laughs, late conversations, unexpected adventures, and the kind of memories that don't need a reason to make us smile.</p>
+        <p class="signature">Happy birthday, Akash. Keep being you.</p>
+      </section>
+
+      <section class="section reveal-on-scroll" id="traitsSection">
+        <div class="section-head"><div><p class="eyebrow">The little things</p><h2>Things that make Akash… Akash</h2></div><p class="section-note">Tap a card.</p></div>
+        <div id="traits" class="trait-grid"></div>
+      </section>
+
+      <section class="section reveal-on-scroll">
+        <div class="section-head"><div><p class="eyebrow">Collected moments</p><h2>Our Moments</h2></div><p class="section-note">The memories are yours to add.</p></div>
+        <div id="memories" class="memory-grid"></div>
+      </section>
+
+      <section class="section reveal-on-scroll">
+        <div class="section-head"><div><p class="eyebrow">From people who care</p><h2>A few words for you</h2></div></div>
+        <div id="wishes" class="wish-grid"></div>
+      </section>
+
+      <section class="section cake-section reveal-on-scroll" id="cakeSection">
+        <p class="eyebrow">One important tradition</p><h2>Okay… make a wish.</h2>
+        <div class="cake" id="cake" aria-label="Birthday cake">
+          <div class="flames"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="candles"><b></b><b></b><b></b><b></b><b></b></div>
+          <div class="cake-top"></div><div class="cake-body"><span></span><span></span><span></span></div>
+          <div class="plate"></div>
+        </div>
+        <button class="primary" id="blowBtn">Blow the candles 🎂</button>
+        <div id="cakeReveal" class="cake-reveal" hidden><p>May this year be your best chapter yet.</p><button class="ghost" id="oneMore">There's one more thing…</button></div>
+      </section>
+
+      <section class="final-section" id="final">
+        <div class="final-glow"></div>
+        <div class="final-content">
+          <p class="eyebrow">One last thing, Akash…</p>
+          <h2>I hope this year gives you more reasons to laugh, more moments worth remembering, and more adventures than you expected.</h2>
+          <p class="final-copy">Everything you've been quietly wishing for — I hope it finds its way to you. You deserve a beautiful year.</p>
+          <div class="heart">♥</div><h3>Happy Birthday, Akash.</h3>
+          <div class="final-date">09.09.2026</div><p class="made">Made with <span>♥</span> for Akash</p>
+          <button class="ghost" id="replay">Experience it again ↻</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="modal" id="modal" hidden><div class="modal-card"><button class="modal-close" id="modalClose">×</button><div id="modalVisual"></div><p class="eyebrow" id="modalDate"></p><h3 id="modalTitle"></h3><p id="modalDescription"></p></div></div>
+  <button class="music-toggle" id="musicToggle" hidden aria-label="Toggle music">♪</button>
+  <audio id="music" src="./audio/birthday.mp3" loop preload="none"></audio>
+  <script src="./script.js"></script>
+</body>
 </html>
