@@ -13,9 +13,9 @@ export const birthdayData = {
     { title: 'The Memories', icon: 'camera', description: 'A collection of tiny moments that turned into stories worth keeping.' },
   ],
   memories: [
-    { image: '/images/memory-1.jpg', date: 'Add a date', title: 'That random day', description: 'Drop a favorite photo into public/images and turn this placeholder into a real memory.' },
-    { image: '/images/memory-2.jpg', date: 'Add a date', title: 'One for the books', description: 'The best memories are usually the ones nobody planned.' },
-    { image: '/images/memory-3.jpg', date: 'Add a date', title: 'Still makes me smile', description: 'A little space waiting for one of your favorite moments together.' },
+    { image: './images/memory-1.jpg', date: 'Add a date', title: 'That random day', description: 'Drop a favorite photo into public/images and turn this placeholder into a real memory.' },
+    { image: './images/memory-2.jpg', date: 'Add a date', title: 'One for the books', description: 'The best memories are usually the ones nobody planned.' },
+    { image: './images/memory-3.jpg', date: 'Add a date', title: 'Still makes me smile', description: 'A little space waiting for one of your favorite moments together.' },
   ],
   wishes: [
     { name: 'Your people', relationship: 'The ones cheering for you', message: 'Keep smiling, keep growing, and keep being the person everyone loves having around.' },
